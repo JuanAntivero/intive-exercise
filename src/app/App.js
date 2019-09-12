@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import PlayersPage from '../players/PlayersPage';
+import PlayersPageContainer from '../players/PlayersPageContainer';
 import TopBar from '../app/common/TopBar';
 
 function App() {
   return (
     <React.Fragment>
       <TopBar topBarText='Intive Exercise'/>
-      <PlayersPage/>
+      <PlayersPageContainer/>
     </React.Fragment>
   );
 }
