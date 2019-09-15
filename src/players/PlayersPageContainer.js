@@ -1,17 +1,18 @@
 import { connect } from "react-redux";
-import { fetchPlayers } from "./playersActions";
-import {playersPageValuesSelector, playersPositionsSelector} from "./playersSelectors";
+import { filterPlayers, fetchPlayers } from "./playersActions";
+import {allPlayersInfoSelector, playersFilteredValuesSelector, playersPositionsSelector} from "./playersSelectors";
 import PlayersPage from "./PlayersPage";
 
 const mapStateToProps = state => ({
-    players: playersPageValuesSelector(state),
-    loading: state.loading,
-    error: state.error,
+    players: playersFilteredValuesSelector(state),
+    loading: allPlayersInfoSelector(state).loading,
+    error: allPlayersInfoSelector(state).error,
     playersPositions: playersPositionsSelector(state)
   });
   
   const mapDispatchToProps = dispatch => ({
-    fetchPlayers : () => dispatch(fetchPlayers())
+    fetchPlayers : () => dispatch(fetchPlayers()),
+    filterPlayers : (name, position, age) => dispatch(filterPlayers(name, position, age))
   });
   
   export default connect(mapStateToProps,mapDispatchToProps)(PlayersPage);

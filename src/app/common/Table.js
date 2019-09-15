@@ -14,7 +14,8 @@ function Table(props){
                 </tr>
             </thead>
             <tbody>   
-            {props.trows.map((rowInfo, pos) => {
+            {props.trows.length !== 0?
+                props.trows.map((rowInfo, pos) => {
                     return (
                         <tr key={pos}>
                             {props.tcols.map((col, colPos) => {
@@ -26,7 +27,13 @@ function Table(props){
                             })}
                         </tr>
                     );
-                })}
+                })
+            :
+            <tr>
+                <td className='no-records-found' colSpan={props.tcols.length}>
+                    No records found
+                </td>
+            </tr>}
             </tbody>
             </table>
     );

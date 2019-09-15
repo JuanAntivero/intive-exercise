@@ -1,13 +1,17 @@
 import {
     FETCH_PLAYERS_BEGIN,
     FETCH_PLAYERS_SUCCESS,
-    FETCH_PLAYERS_ERROR
+    FETCH_PLAYERS_ERROR,
+    FILTER_PLAYERS
   } from './playersActions.js';
   
   const initialState = {
     players: [],
     loading: false,
-    error: null
+    error: null,
+    nameFilter:"",
+    positionFilter:"",
+    ageFilter:"",
   };
   
  function playersReducer(state = initialState, action) {
@@ -33,7 +37,14 @@ import {
           error: action.payload.error,
           players: []
         };
-
+      case FILTER_PLAYERS:
+        return {
+          ...state,
+          nameFilter:action.nameFilter,
+          ageFilter:action.ageFilter,
+          positionFilter:action.positionFilter
+        };
+        
       default:
         return state;
     }

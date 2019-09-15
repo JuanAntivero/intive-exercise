@@ -3,6 +3,7 @@ import axios from "axios";
 export const FETCH_PLAYERS_BEGIN = 'FETCH_PLAYERS_BEGIN';
 export const FETCH_PLAYERS_SUCCESS = 'FETCH_PLAYERS_SUCCESS';
 export const FETCH_PLAYERS_ERROR = 'FETCH_PLAYERS_ERROR';
+export const FILTER_PLAYERS = 'FILTER_PLAYERS';
 
 export const fetchPlayersBegin = () => {
     return {
@@ -13,7 +14,7 @@ export const fetchPlayersBegin = () => {
 export const fetchPlayersSuccess = (players) => {
     return {
         type: FETCH_PLAYERS_SUCCESS,
-        payload: {players}
+        payload: players ? {players} : {players:[]}
     }
 }
 
@@ -35,4 +36,13 @@ export const fetchPlayers = () => {
             dispatch(fetchPlayersError(e));
         })
     }
+}
+
+export const filterPlayers = (nameFilter, positionFilter, ageFilter) => {
+    return ({
+        type: FILTER_PLAYERS,
+        nameFilter: nameFilter,
+        ageFilter: ageFilter,
+        positionFilter: positionFilter,
+    });
 }
