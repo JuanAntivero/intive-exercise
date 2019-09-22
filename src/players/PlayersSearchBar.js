@@ -1,42 +1,39 @@
 import React from 'react';
 import './Players.css';
 
-function PlayersSearchBar(props){
-    return (
-        <div className='searchBar'>
+function PlayersSearchBar (props){
+    return(
+        <form className='searchBar' onSubmit= {(e) => props.onSubmit(e)}>
             <input className='searchItem' 
-                   type='text' 
-                   placeholder='Player Name'
-                   value={props.nameValue}
-                   name={props.nameName}
-                   onChange = {(e) => props.handleChange(e)}/>
+                type='text' 
+                placeholder='Player Name'
+                value={props.nameFilter}
+                name='nameFilter'
+                onChange = {(e) => props.handleNameChange(e)}/>
 
-            <select className='searchItem' 
-                    defaultValue=""
-                    value={props.positionValue}
-                    name={props.positionName}
+            <select className='searchItem'
+                    value={props.positionFilter}
+                    name='positionFilter'
                     onChange={(e) => props.handleChange(e)}>
-                <option value="" disabled={props.positionValue === ""? true : false}>Position</option>
+                <option value="" disabled={props.positionFilter === ""? true : false}>Position</option>
                 {props.playersPositions.map((position,pos) => {
                     return (<option value={position} key={pos}>{position}</option>);
                 })}
             </select>
 
             <input className='searchItem'
-                   type='number' 
-                   placeholder='Age'
-                   name={props.ageName}
-                   value={props.ageValue}
-                   min={18}
-                   max={40}
-                   onChange = {(e) => props.handleChange(e)}
-                   onBlur = {(e) => props.onAgeBlur(e)}/>
+                type='number' 
+                placeholder='Age'
+                name='ageFilter'
+                value={props.ageFilter}
+                min={18}
+                max={40}
+                onChange = {(e) => props.handleChange(e)}/>
 
             <input className='searchItem searchButton'
-                   type='button' 
-                   value='Search'
-                   onClick = {props.onFilter}/>
-        </div>
+                type='submit' 
+                value='Search'/>
+        </form>
     );
 }
 

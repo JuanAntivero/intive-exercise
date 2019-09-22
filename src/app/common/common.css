@@ -104,3 +104,11 @@
     font-size: 1.7em;
     padding: 1px 1px;
 }
+
+/*
+* Error Boundary style
+*/
+.error-boundary{
+  padding:1em; 
+  background-color :#fac2be
+}

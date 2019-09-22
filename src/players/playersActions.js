@@ -28,7 +28,7 @@ export const fetchPlayersError = (error) => {
 export const fetchPlayers = () => {
     return dispatch => {
         dispatch(fetchPlayersBegin());
-        axios.get('https://football-players-b31f2.firebaseio.com/players.json?print=pretty')
+        return axios.get('https://football-players-b31f2.firebaseio.com/players.json?print=pretty')
         .then(res => {
             dispatch(fetchPlayersSuccess(res.data));
         })

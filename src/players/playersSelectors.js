@@ -25,14 +25,6 @@ export const playersListSelector = createSelector(
     (players) => players.players
 );
 
-export const playersFiltersSelector = createSelector(
-    allPlayersInfoSelector,
-    (players) => {return {nameFilter:players.nameFilter, 
-                          positionFilter:players.positionFilter, 
-                          ageFilter:players.ageFilter}
-                }
-);
-
 export const playersPageValuesSelector = createSelector(
     playersListSelector,
     (players) => players.map((player) => {
@@ -47,12 +39,20 @@ export const playersPageValuesSelector = createSelector(
     })
 );
 
+export const playersFiltersSelector = createSelector(
+    allPlayersInfoSelector,
+    (players) => {return {nameFilter:players.nameFilter, 
+                          positionFilter:players.positionFilter, 
+                          ageFilter:players.ageFilter}
+                }
+);
+
 export const playersFilteredValuesSelector = createSelector(
     playersPageValuesSelector,
     playersFiltersSelector,
     (players, filters) => players.filter((player) => {
         return(
-            (player.age === filters.ageFilter || filters.ageFilter ==="")
+            (player.age === +filters.ageFilter || filters.ageFilter ==="")
             && (player.position === filters.positionFilter || filters.positionFilter ==="")
             && (player.name.toLowerCase().includes(filters.nameFilter.toLowerCase()) || filters.nameFilter ==="")
         );
