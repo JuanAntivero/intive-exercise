@@ -23,12 +23,21 @@
 }
 
 .searchButton{
-        background-color: rgb(97, 158, 228);
-        border: none;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        cursor: pointer;
+    background-color: rgb(97, 158, 228);
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.clearButton{
+    background-color: rgb(212, 141, 141);
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .searchButton:hover{

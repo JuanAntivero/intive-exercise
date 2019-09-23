@@ -31,6 +31,10 @@ class PlayersSearchBarContainer extends React.Component{
         }
     };
 
+    onClearFilters = (e) =>{
+        this.setState({nameFilter : "", positionFilter : "", ageFilter : ""});
+    }
+
     render(){ 
         return(
             <PlayersSearchBar {...this.props}
@@ -40,6 +44,7 @@ class PlayersSearchBarContainer extends React.Component{
                               nameFilter={this.state.nameFilter}
                               positionFilter={this.state.positionFilter}
                               ageFilter={this.state.ageFilter}
+                              onClearFilters={this.onClearFilters}
             />
         );
     }

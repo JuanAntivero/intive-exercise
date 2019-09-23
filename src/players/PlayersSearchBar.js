@@ -30,6 +30,11 @@ function PlayersSearchBar (props){
                 max={40}
                 onChange = {(e) => props.handleChange(e)}/>
 
+            <input className='searchItem clearButton'
+                type='button' 
+                value='Clear Filters'
+                onClick = {(e) => props.onClearFilters(e)}/>
+
             <input className='searchItem searchButton'
                 type='submit' 
                 value='Search'/>

@@ -34,8 +34,8 @@ describe('Players Page', () =>{
     });
 
     it('shows error on API Call Error', () => {
-        let loadingProps = {...props,error:{message:'API Call Error', stack:'Test Stack'}}
-        const enzymeWrapper = mount(<PlayersPage {...loadingProps}/>);
+        let errorProps = {...props,error:{message:'API Call Error', stack:'Test Stack'}}
+        const enzymeWrapper = mount(<PlayersPage {...errorProps}/>);
         expect(enzymeWrapper.find('div.error-boundary').length).toBe(1);
     });
 });
